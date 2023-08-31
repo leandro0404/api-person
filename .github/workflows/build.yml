@@ -20,27 +20,27 @@ jobs:
       - name: Build with Maven
         run: mvn -B test
 
-      - name: Generate JaCoCo Badges for Module 1
+      - name: Generate JaCoCo Badges for Module Application
         id: jacocoMod1
         uses: cicirello/jacoco-badge-generator@v2
         with:
           generate-branches-badge: true
-          jacoco-csv-file: module1/target/site/jacoco/jacoco.csv
-          coverage-badge-filename: jacoco1.svg
-          branches-badge-filename: branches1.svg
-          coverage-label: coverage (module 1)
-          branches-label: branches (module 1)
+          jacoco-csv-file: application/target/site/jacoco/jacoco.csv
+          coverage-badge-filename: application-coverage-badge.svg
+          branches-badge-filename: application-branches-badge.svg
+          coverage-label: coverage (module application)
+          branches-label: branches (module application)
 
-      - name: Generate JaCoCo Badges for Module 2
+      - name: Generate JaCoCo Badges for Module Repository
         id: jacocoMod2
         uses: cicirello/jacoco-badge-generator@v2
         with:
           generate-branches-badge: true
-          jacoco-csv-file: module2/target/site/jacoco/jacoco.csv
-          coverage-badge-filename: jacoco2.svg
-          branches-badge-filename: branches2.svg
-          coverage-label: coverage (module 2)
-          branches-label: branches (module 2)
+          jacoco-csv-file: repository/target/site/jacoco/jacoco.csv
+          coverage-badge-filename: repository-coverage-badge.svg
+          branches-badge-filename: repository-branches-badge.svg
+          coverage-label: coverage (module repository)
+          branches-label: branches (module repository)
 
       - name: Commit the badge (if it changed)
         run: |
