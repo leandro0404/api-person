@@ -43,6 +43,7 @@ jobs:
           branches-badge-filename: repository-branches-badge.svg
           coverage-label: coverage (repository)
           branches-label: branches (repository)
+
       - name: Generate JaCoCo Badge
           id: jacocoMod3
           uses: cicirello/jacoco-badge-generator@v2
@@ -61,13 +62,7 @@ jobs:
             summary-filename: coverage-summary.json
             coverage-label: coverage
             branches-label: branches
-            colors: '#4c1 #97ca00 #a4a61d #dfb317 #fe7d37 #e05d44'
-            intervals: 100 90 80 70 60 0
-            on-missing-report: fail
-            fail-if-coverage-less-than: 0
-            fail-if-branches-less-than: 0
-            fail-on-coverage-decrease: false
-            fail-on-branches-decrease: false
+
 
       - name: Commit the badge (if it changed)
         run: |
