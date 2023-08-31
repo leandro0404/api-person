@@ -1,0 +1,53 @@
+{
+    "addresses": [
+      {
+        "id": "1",
+        "personId": "1",
+        "zipCode": "12345-678",
+        "state": "California",
+        "city": "Los Angeles",
+        "street": "123 Main Street",
+        "number": "456",
+        "district": "Downtown",
+        "country": {
+          "iso": "US",
+          "code": "1",
+          "name": "United States"
+        },
+        "type": "TAX"
+      },
+      {
+        "id": "2",
+        "personId": "2",
+        "zipCode": "98765-432",
+        "state": "New York",
+        "city": "New York City",
+        "street": "456 Elm Avenue",
+        "number": "789",
+        "district": "Midtown",
+        "country": {
+          "iso": "US",
+          "code": "1",
+          "name": "United States"
+        },
+        "type": "DELIVERY"
+      },
+      {
+        "id": "3",
+        "personId": "1",
+        "zipCode": "54321-876",
+        "state": "Texas",
+        "city": "Austin",
+        "street": "789 Oak Road",
+        "number": "123",
+        "district": "Suburb",
+        "country": {
+          "iso": "US",
+          "code": "1",
+          "name": "United States"
+        },
+        "type": "DELIVERY"
+      }
+    ]
+  }
+  
