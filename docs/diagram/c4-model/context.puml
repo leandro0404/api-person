@@ -12,7 +12,7 @@ Person(user, "User" , " user")
 
 System_Boundary(Leandro, "Leandro "){
 
-    System_Boundary(productSystem,Workspace account){
+    System_Boundary(productSystem, Demo domain personal){
     Container(api_person, "api-person", "Rest", "java app")
     ContainerDb(db_person, "database", "mysql", "data", $sprite="mysql")
 
