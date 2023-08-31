@@ -1,16 +1,37 @@
-query {
-    people(ids: [1, 2, 3, 4]) {
+query PEOPLE_QUERY($input: PersonByIds!) {
+    people(input: $input) {
         id
         name
         phones {
             id
             number
             area
+            type
             country {
                 iso
                 code
                 name
             }
+        }
+        documents {
+            id
+            value
+            type
+        }
+        addresses {
+            id
+            zipCode
+            state
+            city
+            street
+            number
+            district
+            country {
+                iso
+                code
+                name
+            }
+            type
         }
     }
 }

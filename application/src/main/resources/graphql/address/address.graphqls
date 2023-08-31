@@ -1,3 +1,17 @@
 type Address {
-    street : String
+    id: ID!
+    zipCode: String
+    state: String
+    city: String
+    street: String
+    number: String
+    district: String
+    country: Country
+    type: AddressType
+    complement: String
+}
+
+enum AddressType{
+    DELIVERY
+    TAX
 }

@@ -1,29 +1,36 @@
 @startuml
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-
 SHOW_PERSON_OUTLINE()
-
 
 title Container Diagram for api person
 
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-Person(user, "User" , " user")
+title Container Diagram for api person
 
-System_Boundary(Leandro, "Leandro "){
+Person(user, "User", "User")
 
-    System_Boundary(productSystem, Demo domain personal){
-    Container(api_person, "api-person", "Rest", "java app")
-    ContainerDb(db_person, "database", "mysql", "data", $sprite="mysql")
+System_Boundary(Leandro, "Leandro") {
 
+    Container(api_person, "api-person", "GraphQL API", "Node.js App")
+    Container(db_person, "Database", "files json Database", "Data", $sprite="mysql")
+    Container(person_service, "Person Service", "Node.js Service", "Node.js App")
+    Container(address_service, "Address Service", "Node.js Service", "Node.js App")
+    Container(document_service, "Document Service", "Node.js Service", "Node.js App")
+    Container(phone_service, "Phone Service", "Node.js Service", "Node.js App")
 
- }
+    Rel(user, api_person, "Uses", "Uses")
 
+    Rel(api_person, person_service, "Sends Requests to", "HTTP")
+    Rel(api_person, address_service, "Sends Requests to", "HTTP")
+    Rel(api_person, document_service, "Sends Requests to", "HTTP")
+    Rel(api_person, phone_service, "Sends Requests to", "HTTP")
 
-
-Rel_R( user, api_person, "data access")
-Rel_R( api_person, db_person, "data access")
-
-
+    Rel(person_service, db_person, "Reads/Writes", "Reads/Writes")
+    Rel(address_service, db_person, "Reads/Writes", "Reads/Writes")
+    Rel(document_service, db_person, "Reads/Writes", "Reads/Writes")
+    Rel(phone_service, db_person, "Reads/Writes", "Reads/Writes")
+}
 
 @enduml

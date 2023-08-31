@@ -1,10 +1,11 @@
 package com.leandro.borders.repository;
 
-import com.leandro.borders.dto.Person;
+import com.leandro.borders.dto.response.Person;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
 public interface PersonRepository {
 
-    List<Person> findPeopleByIds(List<Long> ids);
+    Mono<List<Person>> findPeopleByIdsAsync(List<Long> ids);
 }

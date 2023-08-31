@@ -1,4 +1,4 @@
-package com.leandro.borders.dto.input;
+package com.leandro.borders.dto.request;
 
 import lombok.Getter;
 import lombok.Setter;

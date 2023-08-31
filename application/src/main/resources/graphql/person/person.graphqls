@@ -3,7 +3,12 @@ type Person {
     name: String
     documents: [Document]
     phones: [Phone]
+    addresses : [Address]
     type : PersonType
+}
+
+input PersonByIds {
+    ids : [ID]!
 }
 
 enum PersonType

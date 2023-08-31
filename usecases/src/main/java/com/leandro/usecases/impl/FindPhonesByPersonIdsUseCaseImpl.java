@@ -1,35 +1,32 @@
 package com.leandro.usecases.impl;
 
-import com.leandro.borders.dto.Country;
-import com.leandro.borders.dto.Person;
-import com.leandro.borders.dto.Phone;
-import com.leandro.borders.dto.enumerable.PhoneType;
+import com.leandro.borders.dto.response.Person;
+import com.leandro.borders.dto.response.Phone;
+import com.leandro.borders.repository.PhoneRepository;
 import com.leandro.borders.usecases.FindPhonesByPersonIdsUseCase;
+import com.leandro.core.usecase.impl.UseCaseBase;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import reactor.core.publisher.Mono;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
 
 @Component
-public class FindPhonesByPersonIdsUseCaseImpl implements FindPhonesByPersonIdsUseCase {
+@RequiredArgsConstructor
+public class FindPhonesByPersonIdsUseCaseImpl
+        extends UseCaseBase<List<Person>, Mono<Map<Person, List<Phone>>>>
+        implements FindPhonesByPersonIdsUseCase {
 
+    private final PhoneRepository phoneRepository;
 
     @Override
-    public Map<Person, List<Phone>> execute(List<Person> persons) {
-        return generatePhonesForPersonIds(persons);
-    }
+    protected Mono<Map<Person, List<Phone>>> onExecute(List<Person> people) {
 
-    public static Map<Person, List<Phone>> generatePhonesForPersonIds(List<Person> persons) {
-        var phoneMap = new HashMap<Person, List<Phone>>();
-        persons.forEach(person -> {
-            List<Phone> phones = new ArrayList<>();
-            phones.add(new Phone(person.getId(),
-                    "31",
-                    UUID.randomUUID().toString(),
-                    new Country("BR", "55", "Brazil"),
-                    PhoneType.PERSONAL
-            ));
-            phoneMap.put(person, phones);
-        });
-        return phoneMap;
+        var ids = people.stream().map(Person::getId).toList();
+        return phoneRepository.findPhonesByPersonIdsAsync(ids)
+                .map(phones -> generateEntitiesForIds(people, phones, Person::getId,
+                        Phone::getPersonId));
+
     }
 }

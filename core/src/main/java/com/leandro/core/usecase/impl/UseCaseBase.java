@@ -1,7 +1,15 @@
-package com.leandro.core.usecase;
+package com.leandro.core.usecase.impl;
 
-public abstract class UseCase<TRequest, TResponse> extends UseCaseBaseTrace {
+import com.leandro.borders.core.usecase.UseCase;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+public abstract class UseCaseBase<TRequest, TResponse> extends UseCaseBaseTrace implements UseCase<TRequest, TResponse> {
 
     protected abstract TResponse onExecute(TRequest request);
 
@@ -16,6 +24,28 @@ public abstract class UseCase<TRequest, TResponse> extends UseCaseBaseTrace {
             logError(ex);
             throw ex;
         }
+    }
+
+
+
+
+    public static <TFirst, TSecond, TKey> Map<TFirst, List<TSecond>> generateEntitiesForIds(
+            List<TFirst> firstList,
+            List<TSecond> secondList,
+            Function<TFirst, TKey> firstKeyExtractor,
+            Function<TSecond, TKey> secondKeyExtractor) {
+
+        Map<TFirst, List<TSecond>> entitiesMap = new HashMap<>();
+        firstList.forEach(first -> {
+            TKey key = firstKeyExtractor.apply(first);
+            List<TSecond> list = secondList.stream()
+                    .filter(second -> secondKeyExtractor.apply(second).equals(key))
+                    .collect(Collectors.toList());
+
+            entitiesMap.put(first, list);
+        });
+
+        return entitiesMap;
     }
 }
 

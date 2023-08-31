@@ -1,4 +1,4 @@
-package com.leandro.core.usecase;
+package com.leandro.core.usecase.impl;
 
 
 import org.slf4j.Logger;

@@ -1,23 +1,19 @@
 package com.leandro.repository.impl;
 
-
-import com.leandro.borders.dto.Person;
-import com.leandro.borders.dto.enumerable.PersonType;
+import com.leandro.borders.dto.response.Person;
 import com.leandro.borders.repository.PersonRepository;
-import org.springframework.stereotype.Service;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Mono;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class PersonRepositoryImpl implements PersonRepository {
-
+@Repository
+@RequiredArgsConstructor
+public class PersonRepositoryImpl extends BaseRepository implements PersonRepository {
 
     @Override
-    public List<Person> findPeopleByIds(List<Long> ids) {
-
-        var persons = new ArrayList<Person>();
-        ids.forEach(x -> persons.add(new Person(x, "name" + x.toString(), List.of(), List.of(), PersonType.INDIVIDUAL)));
-        return persons;
+    public Mono<List<Person>> findPeopleByIdsAsync(List<Long> ids) {
+        return get(queryParameters("/person", ids), Person.class);
     }
 }

@@ -8,4 +8,7 @@ enum DocumentType
 {
     CNPJ
     CPF
+    SSN
+    PASSPORT
+    DRIVER_LICENSE
 }

@@ -1,24 +1,24 @@
 package com.leandro.application.controller;
 
-
-import com.leandro.borders.dto.Address;
-import com.leandro.borders.dto.Document;
-import com.leandro.borders.dto.Person;
-import com.leandro.borders.dto.Phone;
+import com.leandro.borders.dto.request.PersonByIds;
+import com.leandro.borders.dto.response.Address;
+import com.leandro.borders.dto.response.Document;
+import com.leandro.borders.dto.response.Person;
+import com.leandro.borders.dto.response.Phone;
+import com.leandro.borders.usecases.FindAddressesByPersonIdsUseCase;
 import com.leandro.borders.usecases.FindDocumentsByPersonIdsUseCase;
 import com.leandro.borders.usecases.FindPeopleByIdsUseCase;
 import com.leandro.borders.usecases.FindPhonesByPersonIdsUseCase;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.BatchMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 import java.util.Map;
 
-@Slf4j
 @Controller
 @RequiredArgsConstructor
 public class PersonController {
@@ -26,24 +26,26 @@ public class PersonController {
     private final FindPeopleByIdsUseCase findPeopleByIdsUseCase;
     private final FindPhonesByPersonIdsUseCase findPhonesByPersonIdsUseCase;
     private final FindDocumentsByPersonIdsUseCase findDocumentsByPersonIdsUseCase;
+    private final FindAddressesByPersonIdsUseCase findAddressesByPersonIdsUseCase;
 
     @QueryMapping
-    public List<Person> people(@Argument List<Long> ids) {
-        return findPeopleByIdsUseCase.execute(ids);
+    public Mono<List<Person>> people(@Argument PersonByIds input) {
+        return findPeopleByIdsUseCase.execute(input);
     }
 
-
     @BatchMapping
-    public Map<Person, List<Phone>> phones(List<Person> persons) {
-        log.info("Fetching phones for persons {} ", persons);
+    public Mono<Map<Person, List<Phone>>> phones(List<Person> persons) {
         return findPhonesByPersonIdsUseCase.execute(persons);
     }
 
     @BatchMapping
-    public Map<Person, List<Document>> documents(List<Person> persons) {
-        log.info("Fetching documents for persons {} ", persons);
+    public Mono<Map<Person, List<Document>>> documents(List<Person> persons) {
         return findDocumentsByPersonIdsUseCase.execute(persons);
     }
 
+    @BatchMapping
+    public Mono<Map<Person, List<Address>>> addresses(List<Person> persons) {
+        return findAddressesByPersonIdsUseCase.execute(persons);
+    }
 }
 

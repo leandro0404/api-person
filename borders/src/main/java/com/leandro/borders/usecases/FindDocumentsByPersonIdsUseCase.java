@@ -1,11 +1,14 @@
 package com.leandro.borders.usecases;
 
-import com.leandro.borders.dto.Document;
-import com.leandro.borders.dto.Person;
+import com.leandro.borders.core.usecase.UseCase;
+import com.leandro.borders.dto.response.Address;
+import com.leandro.borders.dto.response.Document;
+import com.leandro.borders.dto.response.Person;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 import java.util.Map;
 
-public interface FindDocumentsByPersonIdsUseCase {
-    Map<Person, List<Document>> execute(List<Person> persons);
+public interface FindDocumentsByPersonIdsUseCase extends UseCase<List<Person>, Mono<Map<Person, List<Document>>>> {
+
 }

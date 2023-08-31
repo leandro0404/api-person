@@ -1,2 +1,6 @@
-package com.leandro.borders.dto.enumerable;public class AddressType {
+package com.leandro.borders.dto.enumerable;
+
+public enum AddressType {
+    DELIVERY,
+    TAX
 }

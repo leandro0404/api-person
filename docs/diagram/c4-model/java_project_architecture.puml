@@ -1,0 +1,29 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+title Architecture Diagram - Java Project with Spring Framework
+
+Person(user, "User", "User")
+
+System_Boundary(Leandro, "Leandro") {
+
+    Container(application, "application", "Java/Spring", "Application Logic")
+    Container(borders, "borders", "Java/Spring", "Interfaces and Contracts")
+    Container(repository, "repository", "Java/Spring", "Data Access")
+    Container(core, "core", "Java/Spring", "Business Logic")
+    Container(usecases, "usecases", "Java/Spring", "Use Cases")
+
+    Rel_R(user, application, "Uses", "Uses")
+
+    Rel_R(application, usecases, "Uses", "Use Cases")
+
+    Rel_R(usecases, core, "Contains", "Business Logic")
+    Rel_L(usecases, repository, "Reads/Writes", "Data Access")
+    Rel_L(usecases, borders, "Exposes", "APIs and Services")
+
+    Rel_L(repository, core, "Reads/Writes", "infra")
+    Rel_L(repository, borders, "Reads/Writes", "interfaces")
+
+    Rel(core, borders, "Reads/Writes", "interfaces")
+}
+@enduml
