@@ -42,10 +42,10 @@ jobs:
           coverage-label: coverage (module repository)
           branches-label: branches (module repository)
       - name: Commit the badge (if it changed)
-          run: |
-            git config --local user.email "action@github.com"
-            git config --local user.name "GitHub Action"
-            git remote set-url origin https://github.com/${{ github.repository }}
-            git add .
-            git commit -m ":rocket: adding badges" || exit 0
-            git push
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git remote set-url origin https://github.com/${{ github.repository }}
+          git add .
+          git commit -m ":rocket: adding generated badges" || exit 0
+          git push
