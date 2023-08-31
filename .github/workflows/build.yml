@@ -7,6 +7,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@v2
@@ -42,8 +44,6 @@ jobs:
           coverage-label: coverage (module repository)
           branches-label: branches (module repository)
       - name: Commit the badge (if it changed)
-        permissions:
-          contents: write
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
