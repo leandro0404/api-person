@@ -1,0 +1,11 @@
+type Document {
+    id: ID!
+    value: String
+    type: DocumentType
+}
+
+enum DocumentType
+{
+    CNPJ
+    CPF
+}

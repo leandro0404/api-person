@@ -1,0 +1,16 @@
+query {
+    people(ids: [1, 2, 3, 4]) {
+        id
+        name
+        phones {
+            id
+            number
+            area
+            country {
+                iso
+                code
+                name
+            }
+        }
+    }
+}

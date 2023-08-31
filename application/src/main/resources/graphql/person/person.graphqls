@@ -1,0 +1,14 @@
+type Person {
+    id: ID!
+    name: String
+    documents: [Document]
+    phones: [Phone]
+    type : PersonType
+}
+
+enum PersonType
+{
+    INDIVIDUAL
+    CORPORATE
+}
+

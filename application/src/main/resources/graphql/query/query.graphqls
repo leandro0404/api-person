@@ -1,0 +1,3 @@
+type Query {
+    people(ids: [ID!]!): [Person]
+}

@@ -1,0 +1,8 @@
+
+type Country
+{
+    iso: String
+    code: String
+    name: String
+}
+

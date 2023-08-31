@@ -1,0 +1,13 @@
+type Phone {
+    id: ID!
+    area: String
+    number: String
+    country : Country
+    type : PhoneType
+}
+
+enum PhoneType
+{
+    CELL
+    PERSONAL
+}

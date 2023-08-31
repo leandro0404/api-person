@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: api-person
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+
+
+
+graphql:
+  servlet:
+    enabled: true
+    exception-handlers-enabled: true
+  extended-scalars: Date
+  playground:
+    settings:
+      schema.polling.enable: false
+    enabled: true
+    headers:
+      Authorization: Bearer ${token}
+    tabs:
+      - name: Get People
+        query: classpath:playground/people.graphql
+
