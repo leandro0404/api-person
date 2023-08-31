@@ -28,24 +28,24 @@ graphql:
       - name: Get People
         query: classpath:playground/people.graphql
         variables: classpath:playground/people_input.json
-  voyager:
-    enabled: true
-    basePath: /
-    mapping: /voyager
-    endpoint: /graphql
-    cdn:
-      enabled: false
-      version: latest
-    pageTitle: Voyager
-    displayOptions:
-      skipRelay: true
-      skipDeprecated: true
-      rootType: Query
-      sortByAlphabet: false
-      showLeafFields: true
-      hideRoot: false
-    hideDocs: false
-    hideSettings: false
+#  voyager:
+#    enabled: true
+#    basePath: /
+#    mapping: /voyager
+#    endpoint: /graphql
+#    cdn:
+#      enabled: false
+#      version: latest
+#    pageTitle: Voyager
+#    displayOptions:
+#      skipRelay: true
+#      skipDeprecated: true
+#      rootType: Query
+#      sortByAlphabet: false
+#      showLeafFields: true
+#      hideRoot: false
+#    hideDocs: false
+#    hideSettings: false
 
 api:
   node:
