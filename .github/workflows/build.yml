@@ -30,8 +30,8 @@ jobs:
           jacoco-csv-file: application/target/site/jacoco/jacoco.csv
           coverage-badge-filename: application-coverage-badge.svg
           branches-badge-filename: application-branches-badge.svg
-          coverage-label: coverage (module application)
-          branches-label: branches (module application)
+          coverage-label: coverage (application)
+          branches-label: branches (application)
 
       - name: Generate JaCoCo Badges for Module Repository
         id: jacocoMod2
@@ -41,8 +41,32 @@ jobs:
           jacoco-csv-file: repository/target/site/jacoco/jacoco.csv
           coverage-badge-filename: repository-coverage-badge.svg
           branches-badge-filename: repository-branches-badge.svg
-          coverage-label: coverage (module repository)
-          branches-label: branches (module repository)
+          coverage-label: coverage (repository)
+          branches-label: branches (repository)
+      - name: Generate JaCoCo Badge
+          uses: cicirello/jacoco-badge-generator@v2
+          with:
+            jacoco-csv-file: target/site/jacoco/jacoco.csv
+            badges-directory: .github/badges
+            generate-coverage-badge: true
+            coverage-badge-filename: jacoco.svg
+            generate-branches-badge: false
+            branches-badge-filename: branches.svg
+            generate-coverage-endpoint: false
+            coverage-endpoint-filename: jacoco.json
+            generate-branches-endpoint: false
+            branches-endpoint-filename: branches.json
+            generate-summary: false
+            summary-filename: coverage-summary.json
+            coverage-label: coverage
+            branches-label: branches
+            colors: '#4c1 #97ca00 #a4a61d #dfb317 #fe7d37 #e05d44'
+            intervals: 100 90 80 70 60 0
+            on-missing-report: fail
+            fail-if-coverage-less-than: 0
+            fail-if-branches-less-than: 0
+            fail-on-coverage-decrease: false
+            fail-on-branches-decrease: false
       - name: Commit the badge (if it changed)
         run: |
           git config --local user.email "action@github.com"
