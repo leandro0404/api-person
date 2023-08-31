@@ -1,0 +1,22 @@
+version: "3"
+services:
+  api-java:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - person-network
+
+  api-node:
+    build:
+      context: ./api-node-mock
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - person-network
+
+networks:
+  person-network:
