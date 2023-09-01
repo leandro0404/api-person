@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "personId": "1",
+    "number": "+1 123-456-7890",
+    "area": "123",
+    "type": "CELL",
+    "country": {
+      "iso": "US",
+      "code": "1",
+      "name": "United States"
+    }
+  },
+  {
+    "id": "2",
+    "personId": "1",
+    "number": "+1 987-654-3210",
+    "area": "987",
+    "type": "PERSONAL",
+    "country": {
+      "iso": "US",
+      "code": "1",
+      "name": "United States"
+    }
+  },
+  {
+    "id": "3",
+    "personId": "2",
+    "number": "+1 555-123-4567",
+    "area": "555",
+    "type": "CELL",
+    "country": {
+      "iso": "US",
+      "code": "1",
+      "name": "United States"
+    }
+  }
+]

@@ -1,0 +1,37 @@
+query PEOPLE_QUERY {
+    people(input: { ids: [1, 2, 3, 4, 5] }) {
+        id
+        name
+        phones {
+            id
+            number
+            area
+            type
+            country {
+                iso
+                code
+                name
+            }
+        }
+        documents {
+            id
+            value
+            type
+        }
+        addresses {
+            id
+            zipCode
+            state
+            city
+            street
+            number
+            district
+            country {
+                iso
+                code
+                name
+            }
+            type
+        }
+    }
+}
