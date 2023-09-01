@@ -13,8 +13,8 @@ Person(user, "User", "User")
 
 System_Boundary(Leandro, "Leandro") {
 
-    Container(api_person, "api-person", "GraphQL API", "Node.js App")
-    Container(db_person, "Database", "files json Database", "Data", $sprite="mysql")
+    Container(api_person, "api-person", "GraphQL API", "Java Service", "Java", $sprite="java")
+    ContainerDb(db_person, "Database", "files json Database", "Data", $sprite="mysql")
     Container(person_service, "Person Service", "Node.js Service", "Node.js App")
     Container(address_service, "Address Service", "Node.js Service", "Node.js App")
     Container(document_service, "Document Service", "Node.js Service", "Node.js App")
