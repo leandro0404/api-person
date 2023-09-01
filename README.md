@@ -2,8 +2,6 @@
 [![build](https://github.com/leandro0404/api-person/actions/workflows/build.yml/badge.svg)](https://github.com/leandro0404/api-person/actions/workflows/build.yml)
 ![Coverage](.github/badges/application-coverage-badge.svg) ![Branches](.github/badges/application-branches-badge.svg) ![Branches](.github/badges/repository-branches-badge.svg)
 
-repository-branches-badge.svg
-
 #### Context Diagram - Api person
 
 ![context-diagram.svg](docs/diagram/c4-model/images/context.svg)
