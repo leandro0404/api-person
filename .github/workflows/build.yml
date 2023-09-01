@@ -30,8 +30,8 @@ jobs:
           jacoco-csv-file: application/target/site/jacoco/jacoco.csv
           coverage-badge-filename: application-coverage-badge.svg
           branches-badge-filename: application-branches-badge.svg
-          coverage-label: coverage (application)
-          branches-label: branches (application)
+          coverage-label: coverage(application)
+          branches-label: branches(application)
 
       - name: Generate JaCoCo Badges for Module Repository
         id: jacocoMod2
@@ -41,34 +41,8 @@ jobs:
           jacoco-csv-file: repository/target/site/jacoco/jacoco.csv
           coverage-badge-filename: repository-coverage-badge.svg
           branches-badge-filename: repository-branches-badge.svg
-          coverage-label: coverage (repository)
-          branches-label: branches (repository)
-
-      - name: Generate JaCoCo Badge
-        id: jacocoMod3
-        uses: cicirello/jacoco-badge-generator@v2
-        with:
-          jacoco-csv-file: application/target/site/jacoco/jacoco.csv
-          badges-directory: .github/badges
-          generate-coverage-badge: true
-          coverage-badge-filename: jacoco.svg
-          generate-branches-badge: true
-          branches-badge-filename: branches.svg
-          generate-coverage-endpoint: true
-          coverage-endpoint-filename: jacoco.json
-          generate-branches-endpoint: true
-          branches-endpoint-filename: branches.json
-          generate-summary: true
-          summary-filename: coverage-summary.json
-          coverage-label: coverage
-          branches-label: branches
-          colors: '#4c1 #97ca00 #a4a61d #dfb317 #fe7d37 #e05d44'
-          intervals: 100 90 80 70 60 0
-          on-missing-report: true
-          fail-if-coverage-less-than: 0
-          fail-if-branches-less-than: 0
-          fail-on-coverage-decrease: true
-          fail-on-branches-decrease: true
+          coverage-label: coverage(repository)
+          branches-label: branches(repository)
 
       - name: Commit the badge (if it changed)
         run: |
