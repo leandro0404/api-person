@@ -1,5 +1,5 @@
  
-*[docs](../../README.md) 
+* [docs](../../README.md) 
  * [Introdução](../graphql/graphql.md)
    * [fields](../fields/fields.md)
    * [resolver](../resolver/resolver.md)
