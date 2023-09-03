@@ -1,15 +1,17 @@
 package com.leandro.usecases.impl;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.leandro.borders.dto.request.PersonByIds;
 import com.leandro.borders.dto.response.Person;
 import com.leandro.borders.repository.PersonRepository;
 import com.leandro.borders.usecases.FindPeopleByIdsUseCase;
 import com.leandro.core.usecase.impl.UseCaseBase;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import reactor.core.publisher.Mono;
 
-import java.util.List;
+import lombok.RequiredArgsConstructor;
+import reactor.core.publisher.Mono;
 
 @Service
 @RequiredArgsConstructor

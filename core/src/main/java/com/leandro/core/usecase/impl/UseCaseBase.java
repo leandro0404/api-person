@@ -1,15 +1,15 @@
 package com.leandro.core.usecase.impl;
 
-import com.leandro.borders.core.usecase.UseCase;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public abstract class UseCaseBase<TRequest, TResponse> extends UseCaseBaseTrace implements UseCase<TRequest, TResponse> {
+import com.leandro.borders.core.usecase.UseCase;
+
+public abstract class UseCaseBase<TRequest, TResponse> extends UseCaseBaseTrace
+        implements UseCase<TRequest, TResponse> {
 
     protected abstract TResponse onExecute(TRequest request);
 
@@ -25,9 +25,6 @@ public abstract class UseCaseBase<TRequest, TResponse> extends UseCaseBaseTrace 
             throw ex;
         }
     }
-
-
-
 
     public static <TFirst, TSecond, TKey> Map<TFirst, List<TSecond>> generateEntitiesForIds(
             List<TFirst> firstList,
@@ -48,5 +45,3 @@ public abstract class UseCaseBase<TRequest, TResponse> extends UseCaseBaseTrace 
         return entitiesMap;
     }
 }
-
-

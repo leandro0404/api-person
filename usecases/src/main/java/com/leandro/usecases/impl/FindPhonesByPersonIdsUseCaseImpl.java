@@ -1,16 +1,18 @@
 package com.leandro.usecases.impl;
 
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.stereotype.Component;
+
 import com.leandro.borders.dto.response.Person;
 import com.leandro.borders.dto.response.Phone;
 import com.leandro.borders.repository.PhoneRepository;
 import com.leandro.borders.usecases.FindPhonesByPersonIdsUseCase;
 import com.leandro.core.usecase.impl.UseCaseBase;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
-import reactor.core.publisher.Mono;
 
-import java.util.List;
-import java.util.Map;
+import lombok.RequiredArgsConstructor;
+import reactor.core.publisher.Mono;
 
 @Component
 @RequiredArgsConstructor

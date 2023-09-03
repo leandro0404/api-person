@@ -19,16 +19,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
+import org.springframework.web.reactive.function.client.WebClient.Builder;
+import org.springframework.web.reactive.function.client.WebClient.RequestHeadersUriSpec;
+import org.springframework.web.reactive.function.client.WebClient.RequestHeadersSpec;
+
 class PersonRepositoryImplTest {
 
     @Mock
-    private WebClient.Builder webClientBuilder;
+    private Builder webClientBuilder;
     @Mock
     private WebClient webClient;
     @Mock
-    private WebClient.RequestHeadersUriSpec requestHeadersUriSpec;
+    private RequestHeadersUriSpec requestHeadersUriSpec;
     @Mock
-    private WebClient.RequestHeadersSpec requestHeadersSpec;
+    private RequestHeadersSpec requestHeadersSpec;
     @Mock
     private WebClient.ResponseSpec responseSpec;
     @InjectMocks

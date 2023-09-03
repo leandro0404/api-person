@@ -1,5 +1,13 @@
 package com.leandro.application.controller;
 
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.BatchMapping;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.stereotype.Controller;
+
 import com.leandro.borders.dto.request.PersonByIds;
 import com.leandro.borders.dto.response.Address;
 import com.leandro.borders.dto.response.Document;
@@ -9,15 +17,9 @@ import com.leandro.borders.usecases.FindAddressesByPersonIdsUseCase;
 import com.leandro.borders.usecases.FindDocumentsByPersonIdsUseCase;
 import com.leandro.borders.usecases.FindPeopleByIdsUseCase;
 import com.leandro.borders.usecases.FindPhonesByPersonIdsUseCase;
-import lombok.RequiredArgsConstructor;
-import org.springframework.graphql.data.method.annotation.Argument;
-import org.springframework.graphql.data.method.annotation.BatchMapping;
-import org.springframework.graphql.data.method.annotation.QueryMapping;
-import org.springframework.stereotype.Controller;
-import reactor.core.publisher.Mono;
 
-import java.util.List;
-import java.util.Map;
+import lombok.RequiredArgsConstructor;
+import reactor.core.publisher.Mono;
 
 @Controller
 @RequiredArgsConstructor
@@ -48,4 +50,3 @@ public class PersonController {
         return findAddressesByPersonIdsUseCase.execute(persons);
     }
 }
-
