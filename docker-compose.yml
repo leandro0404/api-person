@@ -1,18 +1,14 @@
 version: "3"
 services:
   api-java:
-    build:
-      context: ./
-      dockerfile: Dockerfile
+    image: leandrobhmg/api-person
     ports:
       - "8080:8080"
     networks:
       - person-network
 
   api-node:
-    build:
-      context: ./api-node-mock
-      dockerfile: Dockerfile
+    image: leandrobhmg/api-node_mock
     ports:
       - "3000:3000"
     networks:
