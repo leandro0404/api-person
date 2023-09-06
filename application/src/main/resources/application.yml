@@ -49,5 +49,5 @@ graphql:
 
 api:
   node:
-    base-url: http://host.docker.internal:3000/
+    base-url:  http://api-node-service:3000/
 
